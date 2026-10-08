@@ -1,58 +1,61 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>PlayZone Demo</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PlayZone Demo</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="top">
-    <div class="profile">
-      <div class="avatar">🎭</div>
-      <div><b>player667436</b><small>ID: 75231711</small></div>
-    </div>
-    <div class="balance">🪙 <span id="balance">70,818</span></div>
-    <button class="plus" onclick="addCoins()">+</button>
-  </header>
+<header class="top">
+  <div class="profile"><div class="avatar">🎭</div><div><b>player667436</b><small>ID: 75231711</small></div></div>
+  <div class="balance">🪙 <span id="balance">70,818</span></div>
+  <button class="plus" onclick="addCoins()">+</button>
+</header>
 
-  <main>
-    <section class="banner">
-      <div>
-        <strong>INVITE AND GET BONUS</strong>
-        <span>EARN 100 VIRTUAL COINS<br>BY INVITING FRIENDS</span>
-      </div>
-      <div class="cards">🂡 🂱 🃁</div>
-    </section>
+<main>
+<section id="home" class="page active">
+  <section class="banner"><div><strong>INVITE AND<br>GET BONUS</strong><span>EARN 100 VIRTUAL COINS<br>BY INVITING FRIENDS</span></div><div class="cards">🂡 🂱 🃁</div></section>
+  <div class="notice">🔊 PlayZone Demo — virtual coins only.</div>
+  <div class="promo">🎰 <b>3 PATTI</b> 🎴</div>
+  <nav class="tabs"><button class="active">PG</button><button>JILI</button><button>PP</button><button>JDB</button><button>MG</button></nav>
+  <h2>PG Games</h2>
+  <section class="games">
+    <button class="game" onclick="openGame('Fortune Tiger','🐯')"><div>🐯</div><b>Fortune<br>Tiger</b><small>PLAY</small></button>
+    <button class="game" onclick="openGame('Fortune Ox','🐂')"><div>🐂</div><b>Fortune<br>Ox</b><small>PLAY</small></button>
+    <button class="game" onclick="openGame('Fortune Rabbit','🐰')"><div>🐰</div><b>Fortune<br>Rabbit</b><small>PLAY</small></button>
+    <button class="game" onclick="openGame('Lucky Pig','🐷')"><div>🐷</div><b>Lucky<br>Pig</b><small>PLAY</small></button>
+    <button class="game" onclick="openGame('Candy Boom','🍭')"><div>🍭</div><b>Candy<br>Boom</b><small>PLAY</small></button>
+    <button class="game" onclick="openGame('Lucky Cat','😺')"><div>😺</div><b>Lucky<br>Cat</b><small>PLAY</small></button>
+  </section>
+</section>
 
-    <div class="notice">🔊 Welcome to PlayZone Demo — virtual coins only.</div>
+<section id="gamePage" class="page">
+  <button class="back" onclick="showPage('home')">← Back to Games</button>
+  <div class="playbox">
+    <div class="game-title"><span id="gameEmoji">🐯</span><h1 id="gameName">Fortune Tiger</h1></div>
+    <p class="demo-label">VIRTUAL COINS DEMO</p>
+    <div class="reels"><div id="r1">🍒</div><div id="r2">🍋</div><div id="r3">⭐</div></div>
+    <div class="betrow"><button onclick="changeBet(-10)">−</button><b>BET <span id="bet">10</span></b><button onclick="changeBet(10)">+</button></div>
+    <button class="spin" id="spinBtn" onclick="spin()">SPIN</button>
+    <p id="result" class="result">Tap SPIN to play.</p>
+    <p class="rules">Demo rules: 3 matching symbols = win 5× bet. Two matching = win 2× bet. Otherwise the bet is lost.</p>
+  </div>
+</section>
 
-    <div class="promo">🎰 <b>3 PATTI</b> 🎴</div>
+<section id="promotion" class="page"><h1>🎁 Promotions</h1><div class="panel"><h2>Daily Demo Bonus</h2><p>Claim 100 virtual coins.</p><button class="action" onclick="claimBonus()">Claim 100 Coins</button></div></section>
+<section id="history" class="page"><h1>💰 History</h1><div id="historyList" class="panel"><p>No demo transactions yet.</p></div></section>
+<section id="support" class="page"><h1>🎧 Support</h1><div class="panel"><h2>Demo Support</h2><p>This site uses virtual coins only. No real-money transactions.</p><button class="action" onclick="alert('Demo support is available here.')">Contact Support</button></div></section>
+<section id="information" class="page"><h1>♙ Information</h1><div class="panel"><h2>PlayZone Demo</h2><p>Virtual coins only. No deposits, withdrawals, or real-money gambling.</p></div></section>
+</main>
 
-    <nav class="tabs">
-      <button class="active">PG</button><button>JILI</button><button>PP</button>
-      <button>JDB</button><button>MG</button>
-    </nav>
-
-    <h2>PG Games</h2>
-    <section class="games">
-      <button class="game" onclick="play('Fortune Tiger')"><div>🐯</div><b>Fortune<br>Tiger</b><small>PG</small></button>
-      <button class="game" onclick="play('Fortune Ox')"><div>🐂</div><b>Fortune<br>Ox</b><small>PG</small></button>
-      <button class="game" onclick="play('Fortune Rabbit')"><div>🐰</div><b>Fortune<br>Rabbit</b><small>PG</small></button>
-      <button class="game" onclick="play('Lucky Pig')"><div>🐷</div><b>Lucky<br>Pig</b><small>PG</small></button>
-      <button class="game" onclick="play('Candy Boom')"><div>🍭</div><b>Candy<br>Boom</b><small>PG</small></button>
-      <button class="game" onclick="play('Lucky Cat')"><div>😺</div><b>Lucky<br>Cat</b><small>PG</small></button>
-    </section>
-  </main>
-
-  <footer>
-    <button class="selected">⌂<span>Casino</span></button>
-    <button>🎁<span>Promotion</span></button>
-    <button onclick="showHistory()">💰<span>History</span></button>
-    <button onclick="alert('Demo support only')">🎧<span>Support</span></button>
-    <button onclick="alert('This is a virtual-coin demo. No real-money transactions.')">♙<span>Information</span></button>
-  </footer>
-
-  <script src="app.js"></script>
+<footer>
+<button class="selected" onclick="showPage('home',this)">⌂<span>Casino</span></button>
+<button onclick="showPage('promotion',this)">🎁<span>Promotion</span></button>
+<button onclick="showPage('history',this)">💰<span>History</span></button>
+<button onclick="showPage('support',this)">🎧<span>Support</span></button>
+<button onclick="showPage('information',this)">♙<span>Information</span></button>
+</footer>
+<script src="app.js"></script>
 </body>
 </html>

@@ -1,12 +1,11 @@
-let balance = 70818;
-function addCoins(){balance += 100; document.getElementById('balance').textContent=balance.toLocaleString(); alert('+100 virtual coins added.');}
-function play(name){
-  if(balance < 10){alert('Not enough virtual coins.');return;}
-  balance -= 10;
-  document.getElementById('balance').textContent=balance.toLocaleString();
-  const win = Math.random() > .5;
-  if(win){balance += 20; alert(name + '\\nDemo result: WIN +20 virtual coins');}
-  else alert(name + '\\nDemo result: LOSE -10 virtual coins');
-  document.getElementById('balance').textContent=balance.toLocaleString();
-}
-function showHistory(){alert('Demo History\\n\\nFortune Tiger — -10 / +20 virtual coins\\nLucky Cat — -10 virtual coins\\nBonus — +100 virtual coins');}
+let balance=70818,bet=10,history=[],spinning=false;
+const symbols=['🍒','🍋','⭐','🔔','7️⃣','💎'];
+function render(){document.getElementById('balance').textContent=balance.toLocaleString();document.getElementById('bet').textContent=bet;document.getElementById('historyList').innerHTML=history.length?history.map(x=>'<p>• '+x+'</p>').join(''):'<p>No demo transactions yet.</p>'}
+function addCoins(){balance+=100;history.unshift('+100 virtual coins — demo bonus');render();alert('+100 virtual coins added.')}
+function claimBonus(){balance+=100;history.unshift('+100 virtual coins — promotion bonus');render();alert('100 virtual coins added.')}
+function changeBet(n){bet=Math.max(10,Math.min(100,bet+n));render()}
+function openGame(name,emoji){document.getElementById('gameName').textContent=name;document.getElementById('gameEmoji').textContent=emoji;document.getElementById('result').textContent='Tap SPIN to play.';showPage('gamePage')}
+function spin(){if(spinning)return;if(balance<bet){alert('Not enough virtual coins.');return}spinning=true;balance-=bet;render();document.getElementById('spinBtn').disabled=true;let i=0;let timer=setInterval(()=>{document.querySelectorAll('.reels div').forEach(e=>e.textContent=symbols[Math.floor(Math.random()*symbols.length)]);i++;if(i>=10){clearInterval(timer);finishSpin()}},90)}
+function finishSpin(){let a=symbols[Math.floor(Math.random()*symbols.length)],b=symbols[Math.floor(Math.random()*symbols.length)],c=symbols[Math.floor(Math.random()*symbols.length)];document.getElementById('r1').textContent=a;document.getElementById('r2').textContent=b;document.getElementById('r3').textContent=c;let payout=0;if(a===b&&b===c)payout=bet*5;else if(a===b||b===c||a===c)payout=bet*2;if(payout){balance+=payout;history.unshift('Game win — +'+payout+' virtual coins')}else history.unshift('Game spin — -'+bet+' virtual coins');document.getElementById('result').textContent=payout?'🎉 WIN +'+payout+' virtual coins':'Try again — no win this spin';document.getElementById('spinBtn').disabled=false;spinning=false;render()}
+function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('footer button').forEach(b=>b.classList.remove('selected'));if(btn)btn.classList.add('selected');window.scrollTo(0,0)}
+render();
