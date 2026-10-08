@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PlayZone Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="profile">
+      <div class="avatar">🎭</div>
+      <div><b>player667436</b><small>ID: 75231711</small></div>
+    </div>
+    <div class="balance">🪙 <span id="balance">70,818</span></div>
+    <button class="plus" onclick="addCoins()">+</button>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div>
+        <strong>INVITE AND GET BONUS</strong>
+        <span>EARN 100 VIRTUAL COINS<br>BY INVITING FRIENDS</span>
+      </div>
+      <div class="cards">🂡 🂱 🃁</div>
+    </section>
+
+    <div class="notice">🔊 Welcome to PlayZone Demo — virtual coins only.</div>
+
+    <div class="promo">🎰 <b>3 PATTI</b> 🎴</div>
+
+    <nav class="tabs">
+      <button class="active">PG</button><button>JILI</button><button>PP</button>
+      <button>JDB</button><button>MG</button>
+    </nav>
+
+    <h2>PG Games</h2>
+    <section class="games">
+      <button class="game" onclick="play('Fortune Tiger')"><div>🐯</div><b>Fortune<br>Tiger</b><small>PG</small></button>
+      <button class="game" onclick="play('Fortune Ox')"><div>🐂</div><b>Fortune<br>Ox</b><small>PG</small></button>
+      <button class="game" onclick="play('Fortune Rabbit')"><div>🐰</div><b>Fortune<br>Rabbit</b><small>PG</small></button>
+      <button class="game" onclick="play('Lucky Pig')"><div>🐷</div><b>Lucky<br>Pig</b><small>PG</small></button>
+      <button class="game" onclick="play('Candy Boom')"><div>🍭</div><b>Candy<br>Boom</b><small>PG</small></button>
+      <button class="game" onclick="play('Lucky Cat')"><div>😺</div><b>Lucky<br>Cat</b><small>PG</small></button>
+    </section>
+  </main>
+
+  <footer>
+    <button class="selected">⌂<span>Casino</span></button>
+    <button>🎁<span>Promotion</span></button>
+    <button onclick="showHistory()">💰<span>History</span></button>
+    <button onclick="alert('Demo support only')">🎧<span>Support</span></button>
+    <button onclick="alert('This is a virtual-coin demo. No real-money transactions.')">♙<span>Information</span></button>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
